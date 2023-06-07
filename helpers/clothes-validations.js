@@ -1,5 +1,5 @@
 
-const Category = require('../models/Category');
+const Category = require('../models/category');
 const Clothe = require('../models/clothe');
 
 const validateCategory = async (category = '') => {

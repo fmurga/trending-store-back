@@ -1,5 +1,5 @@
 const { response, request } = require("express");
-const Link = require("../models/Link");
+const Link = require("../models/link");
 
 const linksGet = async (req = request, res = response) => {
   const { limit = 10, from = 1 } = req.query;

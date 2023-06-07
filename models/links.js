@@ -1,6 +1,7 @@
 const { Schema, model, default: mongoose } = require("mongoose");
 
 const subcategoySchema = new Schema({
+
   name: {
     type: String,
     required: [true, 'The name is required']

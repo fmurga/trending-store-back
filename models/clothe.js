@@ -1,7 +1,8 @@
 const { Schema, model, default: mongoose } = require("mongoose");
-const Size = require("../models/sizes");
+const Size = require("./sizes");
 
 const ClotheSchema = Schema({
+
   name: {
     type: String,
     required: [true, 'The name is required']

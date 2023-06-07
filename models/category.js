@@ -10,6 +10,7 @@ const CategorySchema = Schema({
     type: Boolean,
     default: true,
   },
+
 })
 
 module.exports = model('Category', CategorySchema)
