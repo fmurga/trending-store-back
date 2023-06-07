@@ -1,11 +1,11 @@
 const { response, request } = require("express");
-const Link = require("../models/link");
+const Links = require("../models/links");
 
 const linksGet = async (req = request, res = response) => {
   const { limit = 10, from = 1 } = req.query;
   const query = { state: true }
 
-  const links = await Link.find(query)
+  const links = await Links.find(query)
     .skip(Number(from))
     .limit(Number(limit))
 
@@ -24,7 +24,7 @@ const linksPut = async (req, res = response) => {
   const { id } = req.params;
   const { __id, ...rest } = req.body;
 
-  const link = await Link.findByIdAndUpdate(id, rest);
+  const link = await Links.findByIdAndUpdate(id, rest);
 
   res.json({
     link
@@ -34,7 +34,7 @@ const linksPut = async (req, res = response) => {
 const linksPost = async (req, res = response) => {
 
   const { name } = req.body;
-  const link = new Link({ name });
+  const link = new Links({ name });
 
   await link.save();
 
@@ -47,7 +47,7 @@ const linksDelete = async (req, res = response) => {
 
   const { id } = req.params;
 
-  const link = await Link.findByIdAndUpdate(id, { state: false });
+  const link = await Links.findByIdAndUpdate(id, { state: false });
 
   res.json({
     msg: "Link deleted",
