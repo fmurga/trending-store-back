@@ -12,6 +12,8 @@ class Server {
     this.clothesPath = '/api/clothes';
     this.categorysPath = '/api/categorys';
     this.authPath = '/api/auth';
+    this.linksPath = '/api/links';
+
 
     //Middlewares
 
@@ -40,6 +42,7 @@ class Server {
     this.app.use(this.usersPath, require('../routes/user.routes'))
     this.app.use(this.clothesPath, require('../routes/clothes.routes'))
     this.app.use(this.categorysPath, require('../routes/category.routes'))
+    this.app.use(this.linksPath, require('../routes/links.routes'))
 
   }
 

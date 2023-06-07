@@ -2,6 +2,8 @@
 const Category = require('../models/category');
 const Role = require('../models/role');
 const User = require('../models/user');
+const Link = require('../models/links');
+
 
 const validateRole = async (role = '') => {
   const existsRole = await Role.findOne({ role });
@@ -31,6 +33,12 @@ const existsCategoryById = async (id) => {
   }
 }
 
+const existsLinkById = async (id) => {
+  const exist = await Link.findById(id)
+  if (!exist) {
+    throw new Error(`The Id ${id} does not exist`);
+  }
+}
 const existsCategory = async (name) => {
   const existByName = await Category.findOne({ name })
   if (existByName) {
@@ -38,4 +46,5 @@ const existsCategory = async (name) => {
   }
 }
 
-module.exports = { validateRole, existsEmail, existsCategory, existsCategoryById, existsUserById };
+
+module.exports = { validateRole, existsEmail, existsCategory, existsCategoryById, existsUserById, existsLinkById };
