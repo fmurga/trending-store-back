@@ -1,18 +1,13 @@
-const { Schema, model, default: mongoose } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const subcategoySchema = new Schema({
-
   name: {
     type: String,
-    required: [true, 'The name is required']
   },
   path: {
     type: String,
-    required: [true, 'The path is required']
   },
-}
-)
-const Subcategory = mongoose.model('Subcategory', subcategoySchema);
+});
 
 const LinkSchema = Schema({
   name: {
@@ -23,14 +18,16 @@ const LinkSchema = Schema({
     type: String,
     required: [true, 'The path is required']
   },
-  subcategories: {
-    type: mongoose.ObjectId,
-    ref: 'Subcategory'
-  },
+  subcategories: [subcategoySchema],
   state: {
     type: Boolean,
     default: true,
   },
 })
+
+LinkSchema.methods.toJSON = function () {
+  const { __v, ...link } = this.toObject();
+  return link
+}
 
 module.exports = model('Link', LinkSchema)

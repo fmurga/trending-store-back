@@ -22,7 +22,7 @@ router.post('/', [
   check('stock', 'The stock is required').not().isEmpty(),
   check('name', 'The name is required').not().isEmpty(),
   check('initial', 'The initial stock is required').not().isEmpty(),
-  check('size', 'The size is required').not().isEmpty(),
+  check('sizes', 'The size is required').not().isEmpty(),
   check('category').custom(validateCategory),
   validateFieds
 ],

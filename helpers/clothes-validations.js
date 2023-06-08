@@ -3,7 +3,8 @@ const Category = require('../models/category');
 const Clothe = require('../models/clothe');
 
 const validateCategory = async (category = '') => {
-  const existsCategory = await Category.findOne({ category });
+  const existsCategory = await Category.findOne({ name: category });
+  console.log(existsCategory)
   if (!existsCategory) {
     throw new Error(`Category ${category} does not exist`);
   }

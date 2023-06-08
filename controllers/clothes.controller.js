@@ -3,7 +3,7 @@ const Clothe = require("../models/clothe");
 
 
 const clothesGet = async (req = request, res = response) => {
-  const { limit = 10, from = 1 } = req.query;
+  const { limit = 10, from = 0 } = req.query;
   const query = { state: true }
 
   const clothes = await Clothe.find(query)

@@ -1,5 +1,20 @@
 const { Schema, model, default: mongoose } = require("mongoose");
-const Size = require("./sizes");
+
+const SizeSchema = Schema({
+  name: {
+    type: String,
+    required: [true, 'The name is required']
+  },
+  inStock: {
+    type: Boolean,
+    default: false,
+  },
+  stock: {
+    type: Number,
+    default: 0,
+  }
+})
+
 
 const ClotheSchema = Schema({
 
@@ -28,15 +43,18 @@ const ClotheSchema = Schema({
   state: {
     type: Boolean,
     required: true,
+    default: true,
   },
   category: {
     type: String,
     enum: ['women', 'men', 'unisex', 'children']
   },
-  sizes: [{
-    type: mongoose.ObjectId,
-    ref: 'Size'
-  }]
+  sizes: [SizeSchema]
 })
+
+ClotheSchema.methods.toJSON = function () {
+  const { __v, ...clothe } = this.toObject();
+  return clothe
+}
 
 module.exports = model('Clothe', ClotheSchema)

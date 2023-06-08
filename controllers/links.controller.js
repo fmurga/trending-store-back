@@ -2,7 +2,7 @@ const { response, request } = require("express");
 const Links = require("../models/links");
 
 const linksGet = async (req = request, res = response) => {
-  const { limit = 10, from = 1 } = req.query;
+  const { limit = 10, from = 0 } = req.query;
   const query = { state: true }
 
   const links = await Links.find(query)
@@ -33,8 +33,8 @@ const linksPut = async (req, res = response) => {
 
 const linksPost = async (req, res = response) => {
 
-  const { name } = req.body;
-  const link = new Links({ name });
+  const { name, path, subcategories } = req.body;
+  const link = new Links({ name, path, subcategories });
 
   await link.save();
 
