@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { categorysGet, categorysDelete, categorysPost, categorysPut } = require('../controllers/categorys.controller');
 
 const validateFieds = require('../middlewares/validateFields');
-const { existsCategoryById, existsCategory } = require('../helpers/db-validations');
+const { existsCategoryById, existsCategoryByName } = require('../helpers/db-validations');
 
 const router = Router();
 
@@ -20,7 +20,7 @@ router.put('/:id',
 router.post('/',
   [
     check('name', 'The name is required').not().isEmpty(),
-    check('name').custom(existsCategory),
+    check('name').custom(existsCategoryByName),
     validateFieds
   ],
   categorysPost);

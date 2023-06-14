@@ -1,4 +1,4 @@
-const { Schema, model, default: mongoose } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const SizeSchema = Schema({
   name: {
@@ -20,7 +20,8 @@ const ClotheSchema = Schema({
 
   name: {
     type: String,
-    required: [true, 'The name is required']
+    required: [true, 'The name is required'],
+    unique: true
   },
   price: {
     type: Number,
@@ -37,7 +38,7 @@ const ClotheSchema = Schema({
   initial: {
     type: Number,
   },
-  pictureUrl: {
+  img: {
     type: String,
   },
   state: {
@@ -47,7 +48,8 @@ const ClotheSchema = Schema({
   },
   category: {
     type: String,
-    enum: ['women', 'men', 'unisex', 'children']
+    ref: 'Category',
+    required: true
   },
   sizes: [SizeSchema]
 })

@@ -3,10 +3,11 @@ const Clothe = require("../models/clothe");
 
 
 const clothesGet = async (req = request, res = response) => {
-  const { limit = 10, from = 0 } = req.query;
+  const { limit = 10, from = 0, id } = req.query;
   const query = { state: true }
 
-  const clothes = await Clothe.find(query)
+  const clothes = await Clothe
+    .find(query)
     .skip(Number(from))
     .limit(Number(limit))
 
@@ -20,6 +21,16 @@ const clothesGet = async (req = request, res = response) => {
     clothes: resp[1],
   });
 }
+
+const getClotheById = async (req = request, res = response) => {
+
+  const { id } = req.query;
+
+  const clothe = await Clothe.findOne({ id })
+    .populate('category', 'name');
+  res.json(clothe);
+}
+
 
 const clothesPut = async (req, res = response) => {
   const { id } = req.params;
@@ -60,5 +71,6 @@ module.exports = {
   clothesPut,
   clothesPost,
   clothesDelete,
+  getClotheById
 }
 

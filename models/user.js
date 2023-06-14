@@ -20,6 +20,9 @@ const UserSchema = Schema({
     required: [true, 'The role is required'],
     enum: ['admin', 'user']
   },
+  img: {
+    type: String,
+  },
   state: {
     type: Boolean,
     default: true,
