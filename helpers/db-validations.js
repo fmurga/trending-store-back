@@ -59,10 +59,10 @@ const existsCategoryByName = async (name) => {
 
 }
 
-const checkCategoryName = async (name) => {
-  const existByName = await Category.findOne({ name })
+const checkCategoryName = async (id) => {
+  const existByName = await Category.findById({ _id: id })
   if (!existByName) {
-    throw new Error(`The category ${name} does not exists`);
+    throw new Error(`The category ${id} does not exists`);
   }
   return true;
 

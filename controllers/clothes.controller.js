@@ -8,6 +8,7 @@ const clothesGet = async (req = request, res = response) => {
 
   const clothes = await Clothe
     .find(query)
+    .populate('category', 'name')
     .skip(Number(from))
     .limit(Number(limit))
 
@@ -24,10 +25,11 @@ const clothesGet = async (req = request, res = response) => {
 
 const getClotheById = async (req = request, res = response) => {
 
-  const { id } = req.query;
+  const { id } = req.params;
 
-  const clothe = await Clothe.findOne({ id })
+  const clothe = await Clothe.findOne({ _id: id })
     .populate('category', 'name');
+
   res.json(clothe);
 }
 
@@ -36,11 +38,14 @@ const clothesPut = async (req, res = response) => {
   const { id } = req.params;
   const { __id, ...rest } = req.body;
 
-  const clothe = await Clothe.findByIdAndUpdate(id, rest);
 
-  res.json({
-    clothe
-  });
+
+  const clothe = await Clothe.findByIdAndUpdate(id, rest).
+
+
+    res.json({
+      clothe
+    });
 }
 
 const clothesPost = async (req, res = response) => {

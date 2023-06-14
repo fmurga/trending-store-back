@@ -46,11 +46,11 @@ const ClotheSchema = Schema({
     required: true,
     default: true,
   },
-  category: {
-    type: String,
+  category: [{
+    type: Schema.Types.ObjectId,
     ref: 'Category',
     required: true
-  },
+  }],
   sizes: [SizeSchema]
 })
 
