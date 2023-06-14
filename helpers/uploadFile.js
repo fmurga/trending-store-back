@@ -16,14 +16,16 @@ const uploadFileHelper = (files, validExtension = ['png', 'jpg', 'jpeg', 'gif'],
     }
 
     const tempFileName = uuidv4() + "." + extension;
-    const uploadPath = path.join(__dirname + '../uploads/', folder, tempFileName);
+    const uploadPath = path.join(__dirname, '../uploads/', folder, tempFileName);
 
     file.mv(uploadPath, (err) => {
+      console.log(err)
       if (err) {
         reject(err);
       }
 
-      resolve(uploadPath);
+      console.log(tempFileName);
+      resolve(tempFileName);
     });
   });
 
