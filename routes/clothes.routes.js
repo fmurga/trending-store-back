@@ -19,7 +19,6 @@ router.put('/:id',
   [
     check('id', 'This is not a valid id').isMongoId(),
     check('id').custom(existsCloheById),
-    check('category').custom(existsCategoryById),
     validateFieds
   ],
   clothesPut);

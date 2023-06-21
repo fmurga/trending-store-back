@@ -9,11 +9,6 @@ class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || 3000;
-    this.usersPath = '/api/users';
-    this.clothesPath = '/api/clothes';
-    this.categorysPath = '/api/categorys';
-    this.authPath = '/api/auth';
-    this.linksPath = '/api/links';
 
     this.paths = {
       auth: '/api/auth',
@@ -22,6 +17,7 @@ class Server {
       links: '/api/links',
       users: '/api/users',
       uploads: '/api/uploads',
+      orders: '/api/orders',
     }
 
 
@@ -54,9 +50,9 @@ class Server {
     this.app.use(this.paths.categories, require('../routes/category.routes'));
     this.app.use(this.paths.clothes, require('../routes/clothes.routes'));
     this.app.use(this.paths.links, require('../routes/links.routes'));
-    this.app.use(this.paths.links, require('../routes/user.routes'));
+    this.app.use(this.paths.users, require('../routes/user.routes'));
     this.app.use(this.paths.uploads, require('../routes/uploads.routes'));
-
+    this.app.use(this.paths.orders, require('../routes/orders.routes'));
   }
 
 

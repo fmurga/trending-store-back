@@ -37,15 +37,12 @@ const getClotheById = async (req = request, res = response) => {
 const clothesPut = async (req, res = response) => {
   const { id } = req.params;
   const { __id, ...rest } = req.body;
+  const clothe = await Clothe.findByIdAndUpdate(id, rest)
 
 
-
-  const clothe = await Clothe.findByIdAndUpdate(id, rest).
-
-
-    res.json({
-      clothe
-    });
+  res.json({
+    clothe
+  });
 }
 
 const clothesPost = async (req, res = response) => {
