@@ -5,7 +5,36 @@ const validateFieds = require('../middlewares/validateFields');
 const { existsCategoryById, checkCategoryName, existsCloheById } = require('../helpers/db-validations');
 
 const router = Router();
-
+/**
+ * @swagger
+ * /api/clothes:
+ *   get:
+ *     summary: Get all clothes
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   post:
+ *     summary: Post clothe
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ * /api/clothes/:id:
+ *   get:
+ *     summary: Get clothe by id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   put:
+ *     summary: Edit clothe with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   delete:
+ *     summary: Delete clothe with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ */
 
 router.get('/', clothesGet);
 // Obtener una categoria por id - publico

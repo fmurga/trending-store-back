@@ -8,7 +8,36 @@ const { validateRole, existsEmail, existsUserById } = require('../helpers/db-val
 const validateJwt = require('../middlewares/validateJwt');
 
 const router = Router();
-
+/**
+ * @swagger
+ * /api/orders:
+ *   get:
+ *     summary: Get all users
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   post:
+ *     summary: Post user
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ * /api/users/:id:
+ *   get:
+ *     summary: Get user by id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   put:
+ *     summary: Edit user with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   delete:
+ *     summary: Delete user with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ */
 
 router.get('/', usersGet);
 

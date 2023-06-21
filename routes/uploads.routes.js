@@ -8,6 +8,29 @@ const { allowedCollection } = require("../helpers/db-validations");
 const { validateFile } = require("../middlewares/validateFile");
 
 const router = new Router();
+/**
+ * @swagger
+ * /api/uploads:
+ *   post:
+ *     summary: Post an upload
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ * /api/uploads/:collection/:id:
+ *   get:
+ *     summary: Get all uploads for a collection
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   put:
+ *     summary: Edit link with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+
+ */
+
+
 
 router.get('/:collection/:id',
   [

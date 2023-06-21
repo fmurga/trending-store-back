@@ -2,8 +2,27 @@ const express = require('express');
 const cors = require('cors');
 const dbConnection = require('../database/config');
 const fileUpload = require('express-fileupload');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Your API Title',
+      version: '1.0.0',
+      description: 'API Documentation using Swagger',
+    },
+    servers: [
+      {
+        url: `${process.env.API_URL}`, // Replace with your API server URL
+      },
+    ],
+  },
+  apis: ['./routes/*.js'], // Add the path to your route files
+};
 
+const specs = swaggerJsDoc(options);
 
 class Server {
   constructor() {
@@ -27,6 +46,8 @@ class Server {
 
     this.middlewares();
 
+
+    this.documentation();
 
     //Application Routes
     this.routes();
@@ -55,6 +76,9 @@ class Server {
     this.app.use(this.paths.orders, require('../routes/orders.routes'));
   }
 
+  documentation() {
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+  }
 
   listen() {
     this.app.listen(this.port, () => {

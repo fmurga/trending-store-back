@@ -7,7 +7,36 @@ const validateFieds = require('../middlewares/validateFields');
 const { existsLinkById } = require('../helpers/db-validations');
 
 const router = Router();
-
+/**
+ * @swagger
+ * /api/links:
+ *   get:
+ *     summary: Get all links
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   post:
+ *     summary: Post link
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ * /api/links/:id:
+ *   get:
+ *     summary: Get link by id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   put:
+ *     summary: Edit link with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   delete:
+ *     summary: Delete link with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ */
 
 router.get('/', linksGet);
 

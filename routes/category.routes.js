@@ -8,6 +8,36 @@ const { existsCategoryById, existsCategoryByName } = require('../helpers/db-vali
 
 const router = Router();
 
+/**
+ * @swagger
+ * /api/categorys:
+ *   get:
+ *     summary: Get all categories
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   post:
+ *     summary: Post category
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ * /api/categorys/:id:
+ *   get:
+ *     summary: Get category by id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   put:
+ *     summary: Edit category with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *   delete:
+ *     summary: Delete category with id
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ */
 
 router.get('/', categorysGet);
 
