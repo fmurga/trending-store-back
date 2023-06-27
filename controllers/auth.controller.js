@@ -25,10 +25,11 @@ const login = async (req, res = response) => {
       return res.status(400).json({ msg: "User or password are incorrect - password" });
     }
 
-    const token = await generateJWT();
+    const token = await generateJWT(user._id);
 
     res.json({
-      msg: "Login successful"
+      user,
+      token
     })
 
   } catch (error) {

@@ -3,9 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const validateJwt = async (req = request, res = response, next) => {
-  const token = req.header('access-token');
-  console.log(token)
-
+  const token = req.header('x-token');
 
   if (!token) {
     return res.status(401).json({ msg: 'Theres is no token in the request' });
